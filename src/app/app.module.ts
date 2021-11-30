@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSelectionList, MatListOption } from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -48,8 +48,7 @@ import { SearchComponent } from './dashboard/components/search/search.component'
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
-    MatSelectionList, 
-    MatListOption,
+    MatListModule,
     MatProgressSpinnerModule,
   ],
   providers: [],
