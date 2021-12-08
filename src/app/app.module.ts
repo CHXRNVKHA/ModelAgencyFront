@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,13 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import localeRu from '@angular/common/locales/ru';
 import { registerLocaleData } from '@angular/common';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './services/in-memory-data/in-memory-data.service';
+
+import { MaterialModule } from './material.module';
+import { ModelDetailsComponent } from './model-details/model-details.component';
+import { ModelCreateComponent } from './model-create/model-create.component';
+
 registerLocaleData(localeRu);
 
 @NgModule({
@@ -43,9 +51,13 @@ registerLocaleData(localeRu);
     RegistrationComponent,
     DashboardComponent,
     SearchComponent,
+    ModelDetailsComponent,
+    ModelCreateComponent,
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
@@ -68,6 +80,9 @@ registerLocaleData(localeRu);
     NgbModule,
     CommonModule,
     NgbModalModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,68 @@
+.header {
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    height: 350px;
+
+    .photo {
+        width: 20%;
+
+        .photo__header {
+            font-size: 1.4rem;
+        }
+
+        .photo__img {
+            margin-left: 50px;
+        }
+    }
+
+    .events {
+        margin-left: 1.5%;
+        width: 76.5%;
+
+        .events__header {
+            font-size: 1.4rem;
+        }
+
+        .events__content {
+            margin-top: 2%;
+            margin-left: 3%;
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    height: 450px;
+
+    .info {
+        width: 38.5%;
+  
+        .info__header {
+            font-size: 1.4rem;
+        }
+
+        .info__content {
+            margin-top: 2%;
+            margin-left: 6%;
+        }
+    }
+
+    .params {
+        margin-left: 1.5%;
+        width: 58%;
+
+        .params__header {
+            font-size: 1.4rem;
+        }
+
+        .params__content {
+            margin-top: 2%;
+            margin-left: 6%;
+        }
+    }
+}

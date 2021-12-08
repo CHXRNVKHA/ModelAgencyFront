@@ -1,0 +1,19 @@
+.model-create {
+    margin-top: 140px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+
+    .form__input {
+        display: block;
+    }
+
+    .info {
+        width: 35%;
+        margin-left: 10%;
+    }
+}
