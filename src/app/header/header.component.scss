@@ -1,0 +1,53 @@
+.header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    background: #555555;
+    opacity: 1;
+    z-index: 5;
+    top: 0;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    font-size: 1.2rem;
+    margin-left: 2%;
+    width: 90%;
+}
+
+.list__item {
+    margin-left: 2%;
+    margin-top: 0.5%;
+}
+
+.list__item_link {
+    text-decoration: none;
+    color: white;
+}
+
+.list__item_link:hover {
+    opacity: 0.5;
+}
+
+.user-name {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 0.5%;
+    width: 10%;
+}
+
+.logout {
+    width: 10%;
+    margin-top: 0.5%;
+}
+
+.logout__link {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.logout__link:hover {
+    opacity: 0.5;
+}

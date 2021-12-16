@@ -5,8 +5,9 @@
 }
 
 .form {
-    width: 100%;
-    display: flex;
+    width: 35%;
+    margin-left: 35%;
+    margin-top: 2%;
 
     .form__input {
         display: block;
@@ -16,4 +17,12 @@
         width: 35%;
         margin-left: 10%;
     }
+}
+
+.done {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    height: 493px;
 }

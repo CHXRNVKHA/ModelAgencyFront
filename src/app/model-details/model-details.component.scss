@@ -1,3 +1,9 @@
+.model {
+    padding-top: 4%;
+    padding-bottom: 1%;
+    background-color: #CCCCCC;
+}
+
 .header {
     display: flex;
     margin-left: 2%;
@@ -13,7 +19,8 @@
         }
 
         .photo__img {
-            margin-left: 50px;
+            margin-top: 20px;
+            margin-left: 40px;
         }
     }
 

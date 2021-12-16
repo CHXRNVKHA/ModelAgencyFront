@@ -41,6 +41,13 @@ import { InMemoryDataService } from './services/in-memory-data/in-memory-data.se
 import { MaterialModule } from './material.module';
 import { ModelDetailsComponent } from './model-details/model-details.component';
 import { ModelCreateComponent } from './model-create/model-create.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+import {MatStepperModule} from '@angular/material/stepper';
 
 registerLocaleData(localeRu);
 
@@ -53,9 +60,13 @@ registerLocaleData(localeRu);
     SearchComponent,
     ModelDetailsComponent,
     ModelCreateComponent,
+    CalendarComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
+    MatStepperModule,
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -76,6 +87,7 @@ registerLocaleData(localeRu);
     MatListModule,
     MatProgressSpinnerModule,
     AddToCalendarModule,
+    FlatpickrModule.forRoot(),
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     NgbModule,
     CommonModule,

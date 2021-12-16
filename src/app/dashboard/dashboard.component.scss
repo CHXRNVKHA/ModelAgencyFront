@@ -1,15 +1,33 @@
+.action-button:hover {
+  background: whitesmoke;
+}
+
+.arrow {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  margin-top: 0.4%;
+}
+
+.arrow:hover {
+  opacity: 0.7;
+  border: #999999 solid 0.5px;
+  border-radius: 25%;
+}
+
 .dashboard {
-    display: flex;
+  display: flex;
+  margin-top: 4%;
 }
 
 .calendar {
     width: 80%;
     margin-top: 1%;
-    margin-left: 5%;
+    margin-left: 3%;
     margin-right: 2%;
 
     .month {
-        margin-left: 45%;
+
     }
 
     .days {
@@ -34,6 +52,10 @@
                 color: white;
             }
         }
+
+        .day-card:hover {
+          opacity: 0.5;
+        }
     }
 
     .event-form {
@@ -45,6 +67,7 @@
 
     .event-form__fields {
       margin-top: 2%;
+      display: flex;
     }
 
     .event-form__input {
@@ -53,8 +76,14 @@
     }
 }
 
+.card {
+  width: 15%;
+  margin-left: 1%;
+  background: #CCCCCC;
+}
+
 .models {
-    width: 10%;
+    width: 100%;
     margin-left: 1%;
 }
 

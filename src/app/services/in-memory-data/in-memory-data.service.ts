@@ -6,7 +6,12 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService {
   createDb() {
     const models = [
-      { id: 11, name: 'Lise', lastName: 'Annes' },
+      { 
+        id: 11, name: 'Lise', lastName: 'Annes', country: 'Germany', email: 'lisses@gmail.com', age: '20', adress: '2057 Aspen Court, Boston',
+        gender: 'Female', birthday: '21.06.1998', growth: '175.5', bust: '80', waist: '61', foot_size: '40 EU / 9 US / 7 UK',
+        weight: '69', appearance: 'European', eye_color: 'Blue', hair_color: 'Light Brown', hair_type: 'Straight',
+      },
+
       { id: 12, name: 'Ugbad', lastName: 'Ubdi' },
       { id: 13, name: 'Adriana', lastName: 'Lima' },
       { id: 14, name: 'Heidi', lastName: 'Klum' },
@@ -19,10 +24,15 @@ export class InMemoryDataService {
     ];
 
     const events = [
-      { id: 11, description: 'event 1', day: '5', month: '12', startTime: '7', endTime: '18' },
-      { id: 12, description: 'event 2', day: '5', month: '12', startTime: '8', endTime: '13' },
-      { id: 13, description: 'event 3', day: '20', month: '12', startTime: '19', endTime: '20' },
-      { id: 14, description: 'event 4', day: '21', month: '12', startTime: '10', endTime: '14' },
+      { id: 11, description: 'event 1', day: '5', month: '12', year:'2021', startTimeHours: '7', startTimeMinutes: '7', endTimeHours: '18', endTimeMinutes: '18', model: '' },
+      { id: 12, description: 'event 2', day: '5', month: '12', year:'2021', startTimeHours: '8', startTimeMinutes: '7', endTimeHours: '13', endTimeMinutes: '18', model: '' },
+      { id: 13, description: 'event 3', day: '20', month: '12', year:'2021', startTimeHours: '19', startTimeMinutes: '7', endTimeHours: '20', endTimeMinutes: '18', model: ''  },
+      { id: 14, description: 'event 4', day: '21', month: '12', year:'2021', startTimeHours: '10', startTimeMinutes: '7', endTimeHours: '14', endTimeMinutes: '18', model: ''  },
+      { id: 15, description: '', day: '', month: '', year:'', startTimeHours: '', startTimeMinutes: '', endTimeHours: '', endTimeMinutes: '', model: '' },
+      { id: 16, description: '', day: '', month: '', year:'', startTimeHours: '', startTimeMinutes: '', endTimeHours: '', endTimeMinutes: '', model: '' },
+      { id: 17, description: '', day: '', month: '', year:'', startTimeHours: '', startTimeMinutes: '', endTimeHours: '', endTimeMinutes: '', model: '' },
+      { id: 18, description: '', day: '', month: '', year:'', startTimeHours: '', startTimeMinutes: '', endTimeHours: '', endTimeMinutes: '', model: '' },
+      { id: 19, description: '', day: '', month: '', year:'', startTimeHours: '', startTimeMinutes: '', endTimeHours: '', endTimeMinutes: '', model: '' },
     ];
     return {models, events};
   }

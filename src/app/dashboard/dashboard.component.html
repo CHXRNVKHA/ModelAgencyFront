@@ -1,24 +1,110 @@
 <div class="dashboard">
-    <div class="models">
-        <div class="models__search">
-            <app-search></app-search>
+    <mat-card class="card">
+        <div class="models">
+            <div class="action-buttons">
+                <button mat-button class="action-button" (click)="accordion.openAll()">Expand All</button>
+                <button mat-button class="action-button" (click)="accordion.closeAll()">Collapse All</button>
+            </div>
+
+            <mat-accordion multi>
+                <mat-expansion-panel style="margin-top: 5%;">
+                    <mat-expansion-panel-header>
+
+                        <mat-panel-title>
+                          Search Model
+                        </mat-panel-title>
+
+                        <mat-panel-description>
+                          <mat-icon>search</mat-icon>
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+    
+                    <div class="models__search">
+                        <app-search></app-search>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+
+                        <mat-panel-title>
+                          Filter List
+                        </mat-panel-title>
+
+                        <mat-panel-description style="margin-left: 16%;">
+                          <mat-icon>filter_list</mat-icon>
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+                    <form id="models-filter">
+                        <mat-form-field style="font-size: 0.8rem; margin-left: 4%;">
+                            <input matInput type="text" placeholder="Hair Color" spellcheck="false" />
+                        </mat-form-field>
+            
+                        <mat-form-field style="font-size: 0.8rem; margin-left: 4%;">
+                            <input matInput type="text" placeholder="Eye Color" spellcheck="false" />
+                        </mat-form-field>
+            
+                        <mat-form-field style="font-size: 0.8rem; margin-left: 4%;">
+                            <input matInput type="text" placeholder="Height" spellcheck="false" />
+                        </mat-form-field>
+            
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            type="submit"
+                            style="margin-left: 43%;"
+                        >
+                            Submit
+                        </button>
+                    </form>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+
+                        <mat-panel-title>
+                          Models List
+                        </mat-panel-title>
+
+                        <mat-panel-description style="margin-left: 8%;">
+                          <mat-icon>list</mat-icon>
+                        </mat-panel-description>
+
+                    </mat-expansion-panel-header>
+
+                    <div>
+                        <label for="models-list">Models List</label>
+                        <div #modelsList id="models-list" class="models__list">
+                            <ul class="search-result">
+                                <li *ngFor="let model of models" >
+                                  <a routerLink="/model-details/{{model.id}}">
+                                    {{model.name}}
+                                  </a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
-        
-        <label for="models-list">Список моделей</label>
-        <div #modelsList id="models-list" class="models__list">
-            <ul class="search-result">
-                <li *ngFor="let model of models" >
-                  <a routerLink="/model-details">
-                    {{model.name}}
-                  </a>
-                </li>
-              </ul>
-        </div>
-    </div>
+    </mat-card>
+    
     
     <div class="calendar">
-        <h2 class="month">{{ curDateTemp }}</h2>
-
+        <mwl-demo-component></mwl-demo-component>
+        <!--
+            <div style="display: flex; margin-left: 40%;">
+            <mat-icon (click)="monthBack()" style="margin-right: 5%;" class="arrow">keyboard_arrow_left</mat-icon>
+            <h2 class="month">
+                {{ monthTitle }}
+                {{ yearTitle }}
+            </h2>
+            <mat-icon (click)="monthForward()" style="margin-left: 5%;" class="arrow">keyboard_arrow_right</mat-icon>
+        </div>
+        
         <div class="days">
             <mat-card class="day-card" *ngFor="let day of days">
                 <mat-card-header>
@@ -43,34 +129,53 @@
                     </mat-card-title>
                 </mat-card-header>
 
-                <div class="event-form__fields">
-                    <mat-form-field class="event-form__input">
-                        <input matInput type="text" placeholder="Описание события" spellcheck="false" />
-                    </mat-form-field>
-
-                    <mat-form-field class="event-form__input">
-                        <input matInput type="text" placeholder="Модель" spellcheck="false" />
-                    </mat-form-field>
-
-                    <mat-form-field class="event-form__input">
-                        <input matInput type="text" placeholder="Начало" spellcheck="false" />
-                    </mat-form-field>
-
-                    <mat-form-field class="event-form__input">
-                        <input matInput type="text" placeholder="Конец" spellcheck="false" />
-                    </mat-form-field>
+                <form 
+                    class="event-form__fields"
+                    (ngSubmit)="addEvent()"
+                    [formGroup]="addEventForm"
+                >
+                    <div>
+                        <mat-form-field class="event-form__input">
+                            <input matInput type="text" formControlName="description" placeholder="Описание события" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field class="event-form__input">
+                            <input matInput type="text" formControlName="date" placeholder="Дата в формате (дд.мм.гггг)" spellcheck="false" />
+                        </mat-form-field>
+                    </div>
+                    
+                    <div>
+                        <div style="display: flex;">
+                            <mat-form-field class="event-form__input" >
+                                <input matInput type="text" formControlName="start" placeholder="Начало в формате (чч:мм)" spellcheck="false" />
+                            </mat-form-field>
+                        </div>
+    
+                        <div style="display: flex;">
+                            <mat-form-field class="event-form__input" >
+                                <input matInput type="text" formControlName="end" placeholder="Конец в формате (чч:мм)" spellcheck="false" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                   
+                
 
                     <button
                         mat-raised-button
                         color="primary"
                         type="submit"
-                        style="margin-top: 1%; margin-left: 91%;"
+                        style="
+                        margin-top: 12%;
+                        margin-left: 50%;
+                        height: 40px;"
                     >
                         Добавить
                     </button>
-                </div>
+                </form>
             </mat-card>
         </div>
+        -->
+        
     </div>
 </div>
 

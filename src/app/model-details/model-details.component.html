@@ -1,9 +1,7 @@
 <div class="model">
     <div class="header">
         <mat-card class="photo">
-            <mat-card-header>
-                <h2 class="photo__header">{{ photo }}</h2>
-            </mat-card-header>
+
             <mat-card-content>
                 <img class="photo__img" src="https://static.kulturologia.ru/files/u18476/AlenaShiskova.jpg" alt="model photo" width="250px" height="270px">
             </mat-card-content>
@@ -11,15 +9,13 @@
 
         <mat-card class="events">
             <mat-card-header>
-                <h2 class="events__header">{{ event }}</h2>
-                <button mat-raised-button color="primary" style="margin-left: 74%;">Редактировать</button>
+                <h2 class="events__header">Special notes</h2>
             </mat-card-header>
 
             <mat-card-content class="events__content">
-                <p>Кастинг, дата: 6 декабря 10:00</p>
-                <p>Кастинг, дата: 8 декабря 15:00</p>
-                <p>Кастинг, дата: 10 декабря 14:00</p>
-                <p>Кастинг, дата: 11 декабря 8:00</p>
+                <mat-form-field appearance="fill"  style="width: 90%;">
+                    <textarea rows="10" matInput></textarea>
+                </mat-form-field>
             </mat-card-content>
         </mat-card>
     </div>
@@ -27,38 +23,166 @@
     <div class="footer">
         <mat-card class="info">
             <mat-card-header>
-                <h2 class="info__header">{{ info }}</h2>
-                <button mat-raised-button color="primary" style="margin-left: 52.5%;">Редактировать</button>
+                <h2 class="info__header">Information</h2>
+                <mat-icon (click)="switchInfoMode()"  style="margin-left: 67.5%;">edit</mat-icon>
             </mat-card-header>
 
-            <mat-card-content class="info__content">
-                <p>Имя: Lise</p>
-                <p>Фамилия: Annes</p>
-                <p>Гражданство: ФРГ</p>
-                <p>Электронная почта: lisses@gmail.com</p>
-                <p>Возраст: 20</p>
-                <p>Адрес: Проспект Пушкина, 14, д. 88, кв. 37</p>
-                <p>Гендер: Женщина</p>
-                <p>День рождения: 21.06.1998</p>
+            <mat-card-content *ngIf="!isInfoEditMode" class="info__content">
+                <p>Name: {{model.name}}</p>
+                <p>Last Name: {{model.lastName}}</p>
+                <p>Nationality: {{model.country}}</p>
+                <p>Email: {{model.email}}</p>
+                <p>Age: {{model.age}}</p>
+                <p>Address: {{model.adress}}</p>
+                <p>Gender: {{model.gender}}</p>
+                <p>Birthday: {{model.birthday}}</p>
+            </mat-card-content>
+
+            <mat-card-content *ngIf="isInfoEditMode" class="info__content">
+                <form 
+                    (ngSubmit)="saveModelInfo()"
+                    [formGroup]="editInfoForm"
+                    style="display: flex; flex-wrap: wrap;"
+                >
+                    <div style="width: 30%;">
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="name" type="text" placeholder="Name" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="lastName" type="text" placeholder="Last Name" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="country" type="text" placeholder="Nationality" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="email" type="email" placeholder="Email" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="age" type="text" placeholder="Age" spellcheck="false" />
+                        </mat-form-field> 
+                    </div>
+        
+                    <div style="width: 40%; margin-left: 4%;">
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="adress" type="text" placeholder="Address" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="gender" type="text" placeholder="Gender" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="birthday" type="text" placeholder="Birthday" spellcheck="false" />
+                        </mat-form-field>
+                    </div>
+
+                    <div style="width: 100%; margin-left: 64.5%;">
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            type="submit"
+                        >
+                            Save
+                        </button>
+
+                        <button
+                            mat-raised-button
+                            color="warn"
+                            style="margin-left: 7%;"
+                            (click)="cancelInfoModelUpdate()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                    
+                </form>
             </mat-card-content>
         </mat-card>
 
         <mat-card class="params">
             <mat-card-header>
-                <h2 class="params__header">{{ params }}</h2>
-                <button mat-raised-button color="primary" style="margin-left: 70%;">Редактировать</button>
+                <h2 class="params__header">Params</h2>
+                <mat-icon (click)="switchParamMode()" style="margin-left: 83.5%;">edit</mat-icon >
             </mat-card-header>
 
-            <mat-card-content class="params__content">
-                <p>Рост: 175.5 см</p>
-                <p>Бюст: 80 см</p>
-                <p>Талия: 61 см</p>
-                <p>Размер стопы: 40 EU / 9 US / 7 UK</p>
-                <p>Вес: 69 кг</p>
-                <p>Внешность: европеоид</p>
-                <p>Цвет глаз: голубой</p>
-                <p>Цвет волос: светло-коричневые</p>
-                <p>Тип волос: прямые</p>
+            <mat-card-content *ngIf="!isParamEditMode" class="params__content">
+                <p>Height: {{model.growth}}</p>
+                <p>Bust: {{model.bust}}</p>
+                <p>Waist: {{model.waist}}</p>
+                <p>Foot: {{model.foot_size}}</p>
+                <p>Weight: {{model.weight}}</p>
+                <p>Appearance: {{model.appearance}}</p>
+                <p>Eye Color: {{model.eye_color}}</p>
+                <p>Hair Color: {{model.hair_color}}</p>
+                <p>Hair Type: {{model.hair_type}}</p>
+            </mat-card-content>
+
+            <mat-card-content *ngIf="isParamEditMode" class="params__content">
+                <form 
+                    (ngSubmit)="saveModelParam()"
+                    [formGroup]="editParamForm"
+                    style="display: flex; flex-wrap: wrap;"
+                >
+                    <div style="width: 30%;">
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="growth" type="text" placeholder="Height" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="bust" type="text" placeholder="Bust" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="waist" type="text" placeholder="Waist" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="weight" type="email" placeholder="Foot" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="appearance" type="text" placeholder="Weight" spellcheck="false" />
+                        </mat-form-field> 
+                    </div>
+        
+                    <div style="width: 40%; margin-left: 4%;">
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="eye_color" type="text" placeholder="Eye Color" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="hair_color" type="text" placeholder="Hair Color" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="hair_type" type="text" placeholder="Hair Type" spellcheck="false" />
+                        </mat-form-field>
+                    </div>
+
+                    <div style="width: 100%; margin-left: 64.5%;">
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            type="submit"
+                        >
+                            Save
+                        </button>
+
+                        <button
+                            mat-raised-button
+                            color="warn"
+                            style="margin-left: 7%;"
+                            (click)="cancelParamModelUpdate()"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                    
+                </form>
             </mat-card-content>
         </mat-card>
     </div>

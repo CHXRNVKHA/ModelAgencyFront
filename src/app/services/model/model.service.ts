@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators'
+import { Model } from 'src/app/interfaces/model';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +63,8 @@ export class ModelService {
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addModel(model: any): Observable<any> {
+  addModel(model: Model): Observable<any> {
+    console.log('m', model);
     return this.http.post<any>(this.modelsUrl, model, this.httpOptions).pipe(
       catchError(this.handleError<any>('addModel'))
     );
@@ -78,7 +80,7 @@ export class ModelService {
   }
 
   /** PUT: update the hero on the server */
-  updateModel(model: any): Observable<any> {
+  updateModel(model: Model): Observable<any> {
     return this.http.put(this.modelsUrl, model, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateModel'))
     );

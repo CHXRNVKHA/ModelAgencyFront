@@ -20,7 +20,7 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'model-details',
+    path: 'model-details/:id',
     component: ModelDetailsComponent,
   },
   {
