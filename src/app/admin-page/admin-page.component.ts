@@ -4,6 +4,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { Model } from '../interfaces/model';
 import { ModelService } from '../services/model/model.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-page',
@@ -11,14 +12,18 @@ import { ModelService } from '../services/model/model.service';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'email'];
+  displayedColumns: string[] = ['idModel', 'name', 'lastName', 'email'];
   dataSource: MatTableDataSource<Model>;
   models: Model[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private modelService: ModelService) {
+  public deleteForm = this.fb.group({
+    modelId: ['', Validators.maxLength(50)],
+  });
+
+  constructor(private modelService: ModelService, private fb: FormBuilder) {
    
   }
 
@@ -30,6 +35,19 @@ export class AdminPageComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
+  }
+
+  public deleteModel(): void {
+    const id = this.deleteForm.value.modelId;
+    if (id != '') {
+      this.modelService.deleteModel(id).subscribe(() => {
+        this.models = this.models.filter((item) => {
+          return item.idModel != id;
+        });
+
+        this.dataSource = new MatTableDataSource(this.models);
+      })
+    }
   }
 
   applyFilter(event: Event) {

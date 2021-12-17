@@ -70,21 +70,7 @@ export class CalendarComponent {
   };
 
   actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
+
   ];
 
   refresh = new Subject<void>();
@@ -108,6 +94,11 @@ export class CalendarComponent {
       title: 'An event with no end date',
       color: colors.yellow.primary,
       actions: this.actions,
+       resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
     },
     {
       start: subDays(endOfMonth(new Date()), 3),
@@ -115,6 +106,11 @@ export class CalendarComponent {
       title: 'A long event that spans 2 months',
       color: colors.blue.primary,
       allDay: true,
+      resizable: {
+        beforeStart: true,
+        afterEnd: true,
+      },
+      draggable: true,
     },
     {
       start: addHours(startOfDay(new Date()), 2),

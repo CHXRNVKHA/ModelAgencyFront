@@ -46,7 +46,7 @@ export class ModelCreateComponent implements OnInit {
   });
 
   public modelFormParams = this.fb.group({
-    growth: ['', Validators.maxLength(50)],
+    height: ['', Validators.maxLength(50)],
     bust: ['', Validators.maxLength(100)],
     waist: ['', Validators.maxLength(50)],
     footSize: [''],
@@ -70,15 +70,15 @@ export class ModelCreateComponent implements OnInit {
       address: this.modelFormInfo.value.address,
       gender: this.modelFormInfo.value.gender,
       birthday: this.modelFormInfo.value.birthday,
-      growth: this.modelFormInfo.value.growth,
-      bust: this.modelFormInfo.value.bust,
-      waist: this.modelFormInfo.value.waist,
-      footSize: this.modelFormInfo.value.footSize,
-      weight: this.modelFormInfo.value.weight,
-      appearance: this.modelFormInfo.value.appearance,
-      eyeColor: this.modelFormInfo.value.eyeColor,
-      hairColor: this.modelFormInfo.value.hairColor,
-      hairType: this.modelFormInfo.value.hairType,
+      growth: this.modelFormParams.value.height,
+      bust: this.modelFormParams.value.bust,
+      waist: this.modelFormParams.value.waist,
+      footSize: this.modelFormParams.value.footSize,
+      weight: this.modelFormParams.value.weight,
+      appearance: this.modelFormParams.value.appearance,
+      eyeColor: this.modelFormParams.value.eyeColor,
+      hairColor: this.modelFormParams.value.hairColor,
+      hairType: this.modelFormParams.value.hairType,
     } as Model).subscribe(() => {
       window.location.href = '/dashboard';
     });

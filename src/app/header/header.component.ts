@@ -9,13 +9,18 @@ import { UserService } from '../services/user/user.service';
 })
 export class HeaderComponent implements OnInit {
   public user: User;
+  public showAdminLink: boolean = false;
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     const id = Number(localStorage.getItem('id')); 
     this.userService.getUser(id).subscribe((user) => {
       this.user = user;
+      if (this.user.role === 'Super Admin') {
+        this.showAdminLink = true;
+      }
     });
+    
   }
 
   public logout(): void {

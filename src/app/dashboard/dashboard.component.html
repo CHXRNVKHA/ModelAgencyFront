@@ -91,12 +91,11 @@
                     </mat-expansion-panel-header>
 
                     <div>
-                        <label for="models-list">Models List</label>
                         <div #modelsList id="models-list" class="models__list">
                             <ul class="search-result">
                                 <li *ngFor="let model of models" >
                                   <a routerLink="/model-details/{{model.idModel}}">
-                                    {{model.name}}
+                                    {{model.name}} {{model.lastName}}
                                   </a>
                                 </li>
                               </ul>

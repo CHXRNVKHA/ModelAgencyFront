@@ -13,6 +13,10 @@
         </li>
     </ul>
 
+    <div class="admin" *ngIf="showAdminLink">
+        <a routerLink="/admin-page" class="admin__link">Admin Page</a>
+    </div>
+
     <p class="user-name" *ngIf="user">Hi, {{user.name}}</p>
 
     <div class="logout">
