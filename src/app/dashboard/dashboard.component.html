@@ -92,7 +92,8 @@
 
                     <div>
                         <div #modelsList id="models-list" class="models__list">
-                            <ul class="search-result">
+                            <p *ngIf="models.length == 0" style="text-align: center;"><strong>No Results</strong></p>
+                            <ul class="search-result" *ngIf="models.length != 0">
                                 <li *ngFor="let model of models" >
                                   <a routerLink="/model-details/{{model.idModel}}">
                                     {{model.name}} {{model.lastName}}
