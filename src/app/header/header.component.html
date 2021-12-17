@@ -13,10 +13,10 @@
         </li>
     </ul>
 
-    <p class="user-name">Hi, Dmitry</p>
+    <p class="user-name" *ngIf="user">Hi, {{user.name}}</p>
 
     <div class="logout">
-        <a class="logout__link" routerLink="/login">
+        <a class="logout__link" (click)="logout()" href="">
             Logout
         </a>
     </div>

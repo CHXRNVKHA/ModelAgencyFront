@@ -39,6 +39,12 @@ export class DashboardComponent implements OnInit {
     end: [''],
   });
 
+  public filterForm = this.fb.group({
+    hairColor: ['', Validators.maxLength(150)],
+    eyeColor: ['', Validators.maxLength(10)],
+    height: ['',],
+  });
+
   constructor(
       public fb: FormBuilder,
       private modelService: ModelService,
@@ -47,6 +53,29 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getModels();
+  }
+
+  public filterList(): void {
+    this.modelService.getModels().subscribe((models) => {
+      const hairColor: string = this.filterForm.value.hairColor;
+      const eyeColor: string = this.filterForm.value.eyeColor;
+      const height: string = this.filterForm.value.height;
+      this.models = models.filter((item) => {
+        const ihair: string  = item.hairColor;
+        const ieye: string  = item.eyeColor;
+        const iheight: string  = item.growth;
+        return  (ihair.toLowerCase().includes(hairColor.toLowerCase()) && ieye.toLowerCase().includes(eyeColor.toLowerCase()) && iheight.toLowerCase().includes(height.toLowerCase()));
+      })
+      console.log(this.models);
+    });
+  }
+
+  public clearFilters(): void {
+    this.filterForm.patchValue({
+      hairColor: '',
+      eyeColor: '',
+      height: '',
+    })
   }
 
   public addEvent(): void {

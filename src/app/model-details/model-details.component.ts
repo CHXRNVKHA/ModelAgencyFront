@@ -81,9 +81,9 @@ export class ModelDetailsComponent implements OnInit, OnDestroy {
     this.model.footSize= this.editParamForm.value.footSize,
     this.model.weight= this.editParamForm.value.weight,
     this.model.appearance= this.editParamForm.value.appearance,
-    this.model.eyeColor= this.editParamForm.value.eye_color,
-    this.model.hairColor= this.editParamForm.value.hair_color,
-    this.model.hairType= this.editParamForm.value.hair_type,
+    this.model.eyeColor= this.editParamForm.value.eyeColor,
+    this.model.hairColor= this.editParamForm.value.hairColor,
+    this.model.hairType= this.editParamForm.value.hairType,
     this.modelService.updateModel(this.model.idModel, this.model).subscribe(() => {
       this.isParamEditMode = false;
     });

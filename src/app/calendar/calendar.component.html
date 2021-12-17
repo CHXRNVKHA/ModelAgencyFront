@@ -106,9 +106,8 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Title</th>
+        <th>Description</th>
         <th>Primary color</th>
-        <th>Secondary color</th>
         <th>Starts at</th>
         <th>Ends at</th>
         <th>Remove</th>
@@ -118,22 +117,16 @@
     <tbody>
       <tr *ngFor="let event of events">
         <td>
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="event.title"
-            (keyup)="refresh.next()"
-          />
+          <textarea  type="text"
+          class="form-control"
+          [(ngModel)]="event.title"
+          (keyup)="refresh.next()">
+          
+          </textarea>
         </td>
         <td>
           <input
-            type="color"
-            [(ngModel)]="event.color"
-            (change)="refresh.next()"
-          />
-        </td>
-        <td>
-          <input
+          style="align-self: center;"
             type="color"
             [(ngModel)]="event.color"
             (change)="refresh.next()"

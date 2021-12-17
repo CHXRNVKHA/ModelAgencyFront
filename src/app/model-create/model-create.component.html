@@ -1,126 +1,137 @@
-<mat-card class="model-create">
-    <mat-card-header>
-        <mat-card-title>
-            Model Creation
-        </mat-card-title>
-    </mat-card-header>
-    
-    <mat-card-content>
-        <mat-stepper #stepper>
-            <mat-step [stepControl]="modelFormInfo" errorMessage="Name is required.">
-                <form 
-                [formGroup]="modelFormInfo"
-            >
-                <ng-template matStepLabel>Fill out model Info</ng-template>
-                <div class="form">
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="name" type="text" placeholder="Name" spellcheck="false" />
-                    </mat-form-field>
-    
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="lastName" type="text" placeholder="Last Name" spellcheck="false" />
-                    </mat-form-field>
-    
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="country" type="text" placeholder="Nationality" spellcheck="false" />
-                    </mat-form-field>
-    
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="email" type="email" placeholder="Email" spellcheck="false" />
-                    </mat-form-field>
-    
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="age" type="text" placeholder="Age" spellcheck="false" />
-                    </mat-form-field> 
-                
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="address" type="text" placeholder="Address" spellcheck="false" />
-                    </mat-form-field>
-    
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="gender" type="text" placeholder="Gender" spellcheck="false" />
-                    </mat-form-field>
-    
-                    <mat-form-field class="form__input">
-                        <input matInput formControlName="birthday" type="text" placeholder="Birthday" spellcheck="false" />
-                    </mat-form-field>
-                </div>
-
-                <div>
-                    <button mat-button matStepperNext>Next</button>
-                </div>
-            </form>
-            </mat-step>
-
-            <mat-step [stepControl]="modelFormParams" errorMessage="Name is required.">
-                <form 
-                    [formGroup]="modelFormParams"
+<app-header></app-header>
+<section>
+    <mat-card class="model-create">
+        <mat-card-header>
+            <mat-card-title>
+                Model Creation
+            </mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+            <mat-stepper #stepper>
+                <mat-step [stepControl]="modelFormInfo" errorMessage="Name is required.">
+                    <form 
+                    [formGroup]="modelFormInfo"
                 >
-                    <ng-template matStepLabel>Fill out model Params</ng-template>
+                    <ng-template matStepLabel>Fill out model Info</ng-template>
                     <div class="form">
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="growth" type="text" placeholder="Growth" spellcheck="false" />
+                            <input matInput formControlName="name" type="text" placeholder="Name" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="bust" type="text" placeholder="Bust" spellcheck="false" />
+                            <input matInput formControlName="lastName" type="text" placeholder="Last Name" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="waist" type="text" placeholder="Waist" spellcheck="false" />
-                        </mat-form-field>
-
-                        <mat-form-field class="form__input">
-                            <input matInput formControlName="footSize" type="text" placeholder="Foot" spellcheck="false" />
+                            <input matInput formControlName="country" type="text" placeholder="Nationality" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="weight" type="email" placeholder="Weight" spellcheck="false" />
+                            <input matInput formControlName="email" type="email" placeholder="Email" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="appearance" type="text" placeholder="Appearance" spellcheck="false" />
+                            <input matInput formControlName="age" type="text" placeholder="Age" spellcheck="false" />
                         </mat-form-field> 
                     
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="eyeColor" type="text" placeholder="Eye Color" spellcheck="false" />
+                            <input matInput formControlName="address" type="text" placeholder="Address" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="hairColor" type="text" placeholder="Hair Color" spellcheck="false" />
+                            <input matInput formControlName="gender" type="text" placeholder="Gender" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="hairType" type="text" placeholder="Hair Type" spellcheck="false" />
+                            <input matInput formControlName="birthday" type="text" placeholder="Birthday" spellcheck="false" />
                         </mat-form-field>
                     </div>
-                       
-
+    
                     <div>
-                        <button mat-button matStepperPrevious>Back</button>
                         <button mat-button matStepperNext>Next</button>
                     </div>
                 </form>
-            </mat-step>
-
-            <mat-step>
-                <ng-template matStepLabel>Done</ng-template>
-                <div class="done">
-                    <p>
-                        You are now done and can save model profile
-                    </p>
-                    
-                </div>
-               
-          
-                <div>
-                  <button mat-button matStepperPrevious>Back</button>
-                  <button mat-button (click)="stepper.reset()">Reset</button>
-                  <button mat-button (click)="saveModel()">Save</button>
-                </div>
-            </mat-step>
+                </mat-step>
+    
+                <mat-step [stepControl]="modelFormParams" errorMessage="Name is required.">
+                    <form 
+                        [formGroup]="modelFormParams"
+                    >
+                        <ng-template matStepLabel>Fill out model Params</ng-template>
+                        <div class="form">
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="growth" type="text" placeholder="Growth" spellcheck="false" />
+                            </mat-form-field>
             
-        </mat-stepper>
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="bust" type="text" placeholder="Bust" spellcheck="false" />
+                            </mat-form-field>
+            
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="waist" type="text" placeholder="Waist" spellcheck="false" />
+                            </mat-form-field>
+    
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="footSize" type="text" placeholder="Foot" spellcheck="false" />
+                            </mat-form-field>
+            
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="weight" type="email" placeholder="Weight" spellcheck="false" />
+                            </mat-form-field>
+            
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="appearance" type="text" placeholder="Appearance" spellcheck="false" />
+                            </mat-form-field> 
+                        
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="eyeColor" type="text" placeholder="Eye Color" spellcheck="false" />
+                            </mat-form-field>
+            
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="hairColor" type="text" placeholder="Hair Color" spellcheck="false" />
+                            </mat-form-field>
+            
+                            <mat-form-field class="form__input">
+                                <input matInput formControlName="hairType" type="text" placeholder="Hair Type" spellcheck="false" />
+                            </mat-form-field>
+                        </div>
+                           
+    
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+    
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <div class="done">
+                        <p>
+                            You are now done and can save model profile
+                        </p>
+                        
+                    </div>
+                   
+              
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button (click)="stepper.reset()">Reset</button>
+                      <button mat-button (click)="saveModel()">Save</button>
+                    </div>
+                </mat-step>
+                
+            </mat-stepper>
+        </mat-card-content>
+    </mat-card>
+</section>
+
+<footer class="footer1">
+    <p class="text1"> 
+        © Copyright 2021. All rights reserved. Author Kristina Ermakova.
+    </p>
+</footer>
         <!--
             <form  
             (ngSubmit)="saveModel()"
@@ -215,7 +226,6 @@
         </button>
         </form>
         -->
-    </mat-card-content>
-</mat-card>
+
 
 

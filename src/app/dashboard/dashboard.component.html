@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="dashboard">
     <mat-card class="card">
         <div class="models">
@@ -38,27 +39,41 @@
 
                     </mat-expansion-panel-header>
 
-                    <form id="models-filter">
+                    <form 
+                        id="models-filter" 
+                        [formGroup]="filterForm"
+                        (ngSubmit)="filterList()"
+                    >
                         <mat-form-field style="font-size: 0.8rem; margin-left: 4%;">
-                            <input matInput type="text" placeholder="Hair Color" spellcheck="false" />
+                            <input matInput type="text" formControlName="hairColor" placeholder="Hair Color" spellcheck="false" />
                         </mat-form-field>
             
                         <mat-form-field style="font-size: 0.8rem; margin-left: 4%;">
-                            <input matInput type="text" placeholder="Eye Color" spellcheck="false" />
+                            <input matInput type="text" formControlName="eyeColor" placeholder="Eye Color" spellcheck="false" />
                         </mat-form-field>
             
                         <mat-form-field style="font-size: 0.8rem; margin-left: 4%;">
-                            <input matInput type="text" placeholder="Height" spellcheck="false" />
+                            <input matInput type="text" formControlName="height" placeholder="Height" spellcheck="false" />
                         </mat-form-field>
-            
+                        
+                        <div style="display: flex; justify-content: space-between;">
+                            <button
+                                mat-stroked-button
+                                color="primary"
+                                (click)="clearFilters()"
+                            >
+                            Clear
+                        </button>
                         <button
                             mat-raised-button
                             color="primary"
                             type="submit"
-                            style="margin-left: 43%;"
+                           
                         >
                             Submit
                         </button>
+                        </div>
+                        
                     </form>
                 </mat-expansion-panel>
 
@@ -178,6 +193,10 @@
         
     </div>
 </div>
-
+<footer class="footer">
+    <p class="text"> 
+        © Copyright 2021. All rights reserved. Author Kristina Ermakova.
+    </p>
+</footer>
 
 

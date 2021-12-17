@@ -48,6 +48,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
 import {MatStepperModule} from '@angular/material/stepper';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 registerLocaleData(localeRu);
 
@@ -63,6 +64,7 @@ registerLocaleData(localeRu);
     CalendarComponent,
     HeaderComponent,
     FooterComponent,
+    AdminPageComponent,
   ],
   imports: [
     BrowserModule,

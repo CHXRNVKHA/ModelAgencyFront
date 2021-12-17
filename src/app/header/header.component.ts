@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../interfaces/user';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  public user: User;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    const id = Number(localStorage.getItem('id')); 
+    this.userService.getUser(id).subscribe((user) => {
+      this.user = user;
+    });
+  }
+
+  public logout(): void {
+    localStorage.removeItem('id');
+    location.href = '/login';
   }
 
 }
