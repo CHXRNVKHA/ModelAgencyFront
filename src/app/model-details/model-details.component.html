@@ -13,9 +13,11 @@
             </mat-card-header>
 
             <mat-card-content class="events__content">
-                <mat-form-field appearance="fill"  style="width: 90%;">
-                    <textarea rows="10" matInput></textarea>
-                </mat-form-field>
+                <form [formGroup]="notesForm">
+                    <mat-form-field  style="width: 90%;">
+                        <textarea matInput appearance="fill" type="textarea" formControlName="notes" spellcheck="false" style="height: 150px; background-color: #CCCCCC;"></textarea>
+                    </mat-form-field>
+                </form>
             </mat-card-content>
         </mat-card>
     </div>
@@ -33,7 +35,7 @@
                 <p>Nationality: {{model.country}}</p>
                 <p>Email: {{model.email}}</p>
                 <p>Age: {{model.age}}</p>
-                <p>Address: {{model.adress}}</p>
+                <p>Address: {{model.address}}</p>
                 <p>Gender: {{model.gender}}</p>
                 <p>Birthday: {{model.birthday}}</p>
             </mat-card-content>
@@ -68,7 +70,7 @@
         
                     <div style="width: 40%; margin-left: 4%;">
                         <mat-form-field style="display: block;">
-                            <input matInput formControlName="adress" type="text" placeholder="Address" spellcheck="false" />
+                            <input matInput formControlName="address" type="text" placeholder="Address" spellcheck="false" />
                         </mat-form-field>
     
                         <mat-form-field style="display: block;">
@@ -110,15 +112,15 @@
             </mat-card-header>
 
             <mat-card-content *ngIf="!isParamEditMode" class="params__content">
-                <p>Height: {{model.growth}}</p>
+                <p>Growth: {{model.growth}}</p>
                 <p>Bust: {{model.bust}}</p>
                 <p>Waist: {{model.waist}}</p>
-                <p>Foot: {{model.foot_size}}</p>
+                <p>Foot: {{model.footSize}}</p>
                 <p>Weight: {{model.weight}}</p>
                 <p>Appearance: {{model.appearance}}</p>
-                <p>Eye Color: {{model.eye_color}}</p>
-                <p>Hair Color: {{model.hair_color}}</p>
-                <p>Hair Type: {{model.hair_type}}</p>
+                <p>Eye Color: {{model.eyeColor}}</p>
+                <p>Hair Color: {{model.hairColor}}</p>
+                <p>Hair Type: {{model.hairType}}</p>
             </mat-card-content>
 
             <mat-card-content *ngIf="isParamEditMode" class="params__content">
@@ -131,36 +133,41 @@
                         <mat-form-field style="display: block;">
                             <input matInput formControlName="growth" type="text" placeholder="Height" spellcheck="false" />
                         </mat-form-field>
-    
+
                         <mat-form-field style="display: block;">
                             <input matInput formControlName="bust" type="text" placeholder="Bust" spellcheck="false" />
                         </mat-form-field>
-    
+                            
                         <mat-form-field style="display: block;">
                             <input matInput formControlName="waist" type="text" placeholder="Waist" spellcheck="false" />
                         </mat-form-field>
-    
+
                         <mat-form-field style="display: block;">
-                            <input matInput formControlName="weight" type="email" placeholder="Foot" spellcheck="false" />
+                            <input matInput formControlName="footSize" type="text" placeholder="Foot" spellcheck="false" />
                         </mat-form-field>
     
                         <mat-form-field style="display: block;">
-                            <input matInput formControlName="appearance" type="text" placeholder="Weight" spellcheck="false" />
+                            <input matInput formControlName="weight" type="text" placeholder="Weight" spellcheck="false" />
+                        </mat-form-field>
+    
+                        <mat-form-field style="display: block;">
+                            <input matInput formControlName="appearance" type="text" placeholder="Appearance" spellcheck="false" />
                         </mat-form-field> 
                     </div>
         
                     <div style="width: 40%; margin-left: 4%;">
                         <mat-form-field style="display: block;">
-                            <input matInput formControlName="eye_color" type="text" placeholder="Eye Color" spellcheck="false" />
+                            <input matInput formControlName="eyeColor" type="text" placeholder="Eye Color" spellcheck="false" />
                         </mat-form-field>
     
                         <mat-form-field style="display: block;">
-                            <input matInput formControlName="hair_color" type="text" placeholder="Hair Color" spellcheck="false" />
+                            <input matInput formControlName="hairColor" type="text" placeholder="Hair Color" spellcheck="false" />
                         </mat-form-field>
     
                         <mat-form-field style="display: block;">
-                            <input matInput formControlName="hair_type" type="text" placeholder="Hair Type" spellcheck="false" />
+                            <input matInput formControlName="hairType" type="text" placeholder="Hair Type" spellcheck="false" />
                         </mat-form-field>
+
                     </div>
 
                     <div style="width: 100%; margin-left: 64.5%;">

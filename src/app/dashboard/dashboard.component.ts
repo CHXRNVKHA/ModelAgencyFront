@@ -46,23 +46,7 @@ export class DashboardComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.eventUpdateId = 15;
-
     this.getModels();
-    this.getEvents();
-    this.month = moment().month();
-    this.month++;
-
-    moment.locale('ru')
-    this.curDateTemp = moment();
-
-    this.monthTitle = moment().format('MMMM')
-    this.yearTitle = this.curDateTemp.format('YYYY');
-
-    this.daysInMonth = moment().daysInMonth();
-    this.initDays();
-
-    
   }
 
   public addEvent(): void {

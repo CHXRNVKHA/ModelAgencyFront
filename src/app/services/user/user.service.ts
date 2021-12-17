@@ -6,11 +6,12 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators'
 import { Model } from 'src/app/interfaces/model';
 import { environment } from 'src/environments/environment';
+import { User } from 'src/app/interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModelService {
+export class UserService {
   private modelsUrl = 'api/models';  // URL to web api
 
   httpOptions = {
@@ -24,8 +25,8 @@ export class ModelService {
     ) { }
 
   /** GET heroes from the server */
-  getModels(): Observable<any[]> {
-    return this.http.get<any>(`${this.SERVER_URL}/model`);
+  getUsers(): Observable<any[]> {
+    return this.http.get<any>(`${this.SERVER_URL}/user`);
   }
 
   /** GET hero by id. Return `undefined` when id not found */
@@ -42,8 +43,8 @@ export class ModelService {
   }
 
   /** GET hero by id. Will 404 if id not found */
-  getModel(id: number): Observable<any> {
-    const url = `${this.SERVER_URL}/model/${id}`;
+  getUser(id: number): Observable<any> {
+    const url = `${this.SERVER_URL}/user/${id}`;
     return this.http.get<any>(url).pipe(
       catchError(this.handleError<any>(`getModel id=${id}`))
     );
@@ -63,16 +64,15 @@ export class ModelService {
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addModel(model: Model): Observable<any> {
-    console.log('m', model);
-    return this.http.post<any>(`${this.SERVER_URL}/model/create`, model, this.httpOptions).pipe(
+  addUser(user: User): Observable<any> {
+    return this.http.post<any>(`${this.SERVER_URL}/user/create`, user, this.httpOptions).pipe(
       catchError(this.handleError<any>('addModel'))
     );
   }
 
   /** DELETE: delete the hero from the server */
-  deleteModel(id: number): Observable<any> {
-    const url = `${this.SERVER_URL}/model/delete/${id}`;
+  deleteUser(id: number): Observable<any> {
+    const url = `${this.SERVER_URL}/user/delete/${id}`;
 
     return this.http.delete<any>(url, this.httpOptions).pipe(
       catchError(this.handleError<any>('deleteModel'))
@@ -80,8 +80,8 @@ export class ModelService {
   }
 
   /** PUT: update the hero on the server */
-  updateModel(id: number, model: Model): Observable<any> {
-    return this.http.put(`${this.SERVER_URL}/model/${id}`, model, this.httpOptions).pipe(
+  updateUser(id: number, user: User): Observable<any> {
+    return this.http.put(`${this.SERVER_URL}/user/${id}`, user, this.httpOptions).pipe(
       catchError(this.handleError<any>('updateModel'))
     );
   }

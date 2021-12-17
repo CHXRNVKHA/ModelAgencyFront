@@ -34,7 +34,7 @@
                     </mat-form-field> 
                 
                     <mat-form-field class="form__input">
-                        <input matInput formControlName="adress" type="text" placeholder="Address" spellcheck="false" />
+                        <input matInput formControlName="address" type="text" placeholder="Address" spellcheck="false" />
                     </mat-form-field>
     
                     <mat-form-field class="form__input">
@@ -59,7 +59,7 @@
                     <ng-template matStepLabel>Fill out model Params</ng-template>
                     <div class="form">
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="growth" type="text" placeholder="Height" spellcheck="false" />
+                            <input matInput formControlName="growth" type="text" placeholder="Growth" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
@@ -68,6 +68,10 @@
         
                         <mat-form-field class="form__input">
                             <input matInput formControlName="waist" type="text" placeholder="Waist" spellcheck="false" />
+                        </mat-form-field>
+
+                        <mat-form-field class="form__input">
+                            <input matInput formControlName="footSize" type="text" placeholder="Foot" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
@@ -79,15 +83,15 @@
                         </mat-form-field> 
                     
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="eye_color" type="text" placeholder="Eye Color" spellcheck="false" />
+                            <input matInput formControlName="eyeColor" type="text" placeholder="Eye Color" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="hair_color" type="text" placeholder="Hair Color" spellcheck="false" />
+                            <input matInput formControlName="hairColor" type="text" placeholder="Hair Color" spellcheck="false" />
                         </mat-form-field>
         
                         <mat-form-field class="form__input">
-                            <input matInput formControlName="hair_type" type="text" placeholder="Hair Type" spellcheck="false" />
+                            <input matInput formControlName="hairType" type="text" placeholder="Hair Type" spellcheck="false" />
                         </mat-form-field>
                     </div>
                        
@@ -112,7 +116,7 @@
                 <div>
                   <button mat-button matStepperPrevious>Back</button>
                   <button mat-button (click)="stepper.reset()">Reset</button>
-                  <button mat-button>Save</button>
+                  <button mat-button (click)="saveModel()">Save</button>
                 </div>
             </mat-step>
             

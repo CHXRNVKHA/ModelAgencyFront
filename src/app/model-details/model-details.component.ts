@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Model } from '../interfaces/model';
 import { ModelService } from '../services/model/model.service';
@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './model-details.component.html',
   styleUrls: ['./model-details.component.scss']
 })
-export class ModelDetailsComponent implements OnInit {
+export class ModelDetailsComponent implements OnInit, OnDestroy {
   model: Model;
   isInfoEditMode: boolean = false;
   isParamEditMode: boolean = false;
@@ -18,13 +18,17 @@ export class ModelDetailsComponent implements OnInit {
   info: any = 'Информация';
   params: any = 'Параметры';
 
+  public notesForm = this.fb.group({
+    notes: [''],
+  });
+
   public editInfoForm = this.fb.group({
     name: ['', Validators.maxLength(50)],
     lastName: ['', Validators.maxLength(100)],
     country: ['', Validators.maxLength(50)],
     email: [''],
     age: ['', Validators.maxLength(150)],
-    adress: ['', Validators.maxLength(50)],
+    address: ['', Validators.maxLength(50)],
     gender: ['', Validators.maxLength(20)],
     birthday: [''],
   });
@@ -33,11 +37,12 @@ export class ModelDetailsComponent implements OnInit {
     growth: ['', Validators.maxLength(50)],
     bust: ['', Validators.maxLength(100)],
     waist: ['', Validators.maxLength(50)],
+    footSize: [''],
     weight: [''],
     appearance: ['', Validators.maxLength(150)],
-    eye_color: ['', Validators.maxLength(50)],
-    hair_color: ['', Validators.maxLength(20)],
-    hair_type: [''],
+    eyeColor: ['', Validators.maxLength(50)],
+    hairColor: ['', Validators.maxLength(20)],
+    hairType: [''],
   });
 
   constructor(
@@ -50,22 +55,36 @@ export class ModelDetailsComponent implements OnInit {
     this.getModel();
   }
 
+  ngOnDestroy(): void {
+    this.model.notes = this.notesForm.value.notes;
+    console.log('41254', this.notesForm.value.notes);
+    this.modelService.updateModel(this.model.idModel, this.model).subscribe(() => {
+    });
+  }
+
   getModel(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.modelService.getModel(id)
-      .subscribe(model => this.model = model);
+      .subscribe(model => {
+        this.model = model; 
+        console.log(model)
+        this.notesForm.patchValue({
+          notes: this.model.notes,
+        });
+      });
   }
 
   public saveModelParam(): void {
     this.model.growth = this.editParamForm.value.growth,
     this.model.bust= this.editParamForm.value.bust,
     this.model.waist= this.editParamForm.value.waist,
+    this.model.footSize= this.editParamForm.value.footSize,
     this.model.weight= this.editParamForm.value.weight,
     this.model.appearance= this.editParamForm.value.appearance,
-    this.model.eye_color= this.editParamForm.value.eye_color,
-    this.model.hair_color= this.editParamForm.value.hair_color,
-    this.model.hair_type= this.editParamForm.value.hair_type,
-    this.modelService.updateModel(this.model).subscribe(() => {
+    this.model.eyeColor= this.editParamForm.value.eye_color,
+    this.model.hairColor= this.editParamForm.value.hair_color,
+    this.model.hairType= this.editParamForm.value.hair_type,
+    this.modelService.updateModel(this.model.idModel, this.model).subscribe(() => {
       this.isParamEditMode = false;
     });
   }
@@ -76,10 +95,10 @@ export class ModelDetailsComponent implements OnInit {
     this.model.country= this.editInfoForm.value.country,
     this.model.email= this.editInfoForm.value.email,
     this.model.age= this.editInfoForm.value.age,
-    this.model.adress= this.editInfoForm.value.adress,
+    this.model.address= this.editInfoForm.value.adress,
     this.model.gender= this.editInfoForm.value.gender,
     this.model.birthday= this.editInfoForm.value.birthday,
-    this.modelService.updateModel(this.model).subscribe(() => {
+    this.modelService.updateModel(this.model.idModel, this.model).subscribe(() => {
       this.isInfoEditMode = false;
     });
   }
@@ -99,11 +118,12 @@ export class ModelDetailsComponent implements OnInit {
       growth: this.model.growth,
       bust: this.model.bust,
       waist: this.model.waist,
+      footSize: this.model.footSize,
       weight: this.model.weight,
       appearance: this.model.appearance,
-      eye_color: this.model.eye_color,
-      hair_color: this.model.hair_color,
-      hair_type: this.model.hair_type,
+      eyeColor: this.model.eyeColor,
+      hairColor: this.model.hairColor,
+      hairType: this.model.hairType,
     });
   }
 
@@ -114,7 +134,7 @@ export class ModelDetailsComponent implements OnInit {
       country: this.model.country,
       email: this.model.email,
       age: this.model.age,
-      adress: this.model.adress,
+      address: this.model.address,
       gender: this.model.gender,
       birthday: this.model.birthday,
     });

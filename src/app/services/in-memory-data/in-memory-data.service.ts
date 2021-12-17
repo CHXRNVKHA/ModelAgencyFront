@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/**import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -50,3 +50,4 @@ export class InMemoryDataService {
     return events.length > 0 ? Math.max(...events.map(events => events.id)) + 1 : 11;
   }
 }
+*/

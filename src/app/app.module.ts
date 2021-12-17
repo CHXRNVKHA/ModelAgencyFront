@@ -36,7 +36,7 @@ import localeRu from '@angular/common/locales/ru';
 import { registerLocaleData } from '@angular/common';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data/in-memory-data.service';
+//import { InMemoryDataService } from './services/in-memory-data/in-memory-data.service';
 
 import { MaterialModule } from './material.module';
 import { ModelDetailsComponent } from './model-details/model-details.component';
@@ -92,9 +92,9 @@ registerLocaleData(localeRu);
     NgbModule,
     CommonModule,
     NgbModalModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+ //   HttpClientInMemoryWebApiModule.forRoot(
+ //     InMemoryDataService, { dataEncapsulation: false }
+ //   ),
   ],
   providers: [],
   bootstrap: [AppComponent]
