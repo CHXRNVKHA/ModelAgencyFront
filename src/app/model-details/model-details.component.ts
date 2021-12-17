@@ -95,7 +95,7 @@ export class ModelDetailsComponent implements OnInit, OnDestroy {
     this.model.country= this.editInfoForm.value.country,
     this.model.email= this.editInfoForm.value.email,
     this.model.age= this.editInfoForm.value.age,
-    this.model.address= this.editInfoForm.value.adress,
+    this.model.address= this.editInfoForm.value.address,
     this.model.gender= this.editInfoForm.value.gender,
     this.model.birthday= this.editInfoForm.value.birthday,
     this.modelService.updateModel(this.model.idModel, this.model).subscribe(() => {

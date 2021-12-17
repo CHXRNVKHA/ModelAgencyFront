@@ -79,7 +79,7 @@ export class CalendarComponent {
     {
       start: subDays(startOfDay(new Date()), 1),
       end: addDays(new Date(), 1),
-      title: 'A 3 day event',
+      title: 'Casting for Armani ',
       color: colors.red.primary,
       actions: this.actions,
       allDay: true,
@@ -91,7 +91,7 @@ export class CalendarComponent {
     },
     {
       start: startOfDay(new Date()),
-      title: 'An event with no end date',
+      title: 'Compaign',
       color: colors.yellow.primary,
       actions: this.actions,
        resizable: {
@@ -103,7 +103,7 @@ export class CalendarComponent {
     {
       start: subDays(endOfMonth(new Date()), 3),
       end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
+      title: 'DLT Fashoin Week',
       color: colors.blue.primary,
       allDay: true,
       resizable: {
@@ -115,7 +115,7 @@ export class CalendarComponent {
     {
       start: addHours(startOfDay(new Date()), 2),
       end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
+      title: 'Elle Magazine Photoshoot',
       color: colors.yellow.primary,
       actions: this.actions,
       resizable: {
@@ -171,7 +171,7 @@ export class CalendarComponent {
     this.events = [
       ...this.events,
       {
-        title: 'New event',
+        title: '',
         start: startOfDay(new Date()),
         end: endOfDay(new Date()),
         color: colors.red.primary,
